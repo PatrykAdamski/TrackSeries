@@ -1,0 +1,76 @@
+ @import "/src/scss/generic/colors";
+
+
+.main-nav{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: space-around;
+    background-color: #004688;
+    color: #fff;
+
+    .logo{
+        display: flex;
+        align-items: center;
+        font-size: 2.2em;
+        line-height: 8vh;
+        .fa-video{
+            margin-right: 15px;
+            color: $main-color;
+        }
+        span{
+            color: $main-color;
+        }
+    }
+    ul{
+        display: flex;
+        justify-content: flex-end;
+
+        li{
+            padding: 0 30px 0 30px;
+            margin: 0 20px 0 20px;
+            font-size: 1.1em;
+            line-height: 8vh;
+            text-transform: uppercase;
+            color: #fff;
+        }
+        li:hover{
+            background-color: #00a4ff;
+            cursor: pointer;
+        }
+    }
+}
+.link{
+    text-decoration: none;
+}
+
+
+
+@media (max-width: 600px){
+    .main-nav .logo{
+        font-size: 1.4em;
+        .fa-video{
+            margin-right: 5px;
+        }
+    }
+    .main-nav ul li {
+        font-size: 0.8em;
+        margin: 0;
+    }
+}
+
+@media (max-width: 400px){
+    .main-nav .logo{
+        font-size: 0.9em;
+        .fa-video{
+            margin-right: 5px;
+        }
+    }
+    .main-nav ul li {
+        font-size: 0.6em;
+        margin: 0;
+        padding: 0 15px 0 15px;
+    }
+}
