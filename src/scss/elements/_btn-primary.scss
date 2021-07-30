@@ -1,0 +1,16 @@
+.btn-primary{
+    background-color: $secondary-color;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 30px 70px;
+    margin-top: 15px;
+    border: 1px solid #fff;
+    font-size: 1.3em;
+    border-radius: 3px;
+    outline: none;
+    transition: .2s;
+}
+.btn-primary:hover{
+    background-color: $hover-color;
+}

@@ -1,11 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Navigation from './components/Navigation';
+import AppContent from './components/AppContent';
+import "./scss/main.scss";
+
+  function App(){
+    return(
+      <>
+      <Navigation/>
+      <AppContent/>
+      </>
+    );
+  }
 
 ReactDOM.render(
-  <React.StrictMode>
-   
-  </React.StrictMode>,
-  document.getElementById('root')
+   <App/>,document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
