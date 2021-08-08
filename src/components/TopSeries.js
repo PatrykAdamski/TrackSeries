@@ -1,135 +1,56 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShareSquare } from '@fortawesome/free-solid-svg-icons';
+import TopSeriesElement from './TopSeriesElement';
+import React, {useEffect, useState} from "react";
 
 export default function TopSeries(){
 
+    const [inputValue, setinputValue] = useState('');
+     const [allShows, setallShows] = useState([]);
 
+  
+        const handleChange = e => {
+            setinputValue(e.target.value);
+        }
+    
 
-    return(
+     useEffect(()=>{
+         fetch(`https://api.tvmaze.com/search/shows?q=${inputValue}`)
+         .then((response)=> {
+             return response.json();
+         })
+         .then((show) => {
+             console.log(show);
+            setallShows(show);
+         })
+         
+     }, [inputValue])  
+
+     return(
         <>
+        <div className='container-search'>
+        <input type = 'search' placeholder = 'Search...' value={inputValue} onChange={handleChange} className='search'></input>
+        </div>
         <section className='wrapper-movie-elements'>
-            <div className='movie-elements'>
-                <img src="images/header-img.jpg" className='movie-img' alt='movie'/>
-                <h3 className='movie-name'>Sherlock</h3>
-                <div className='movie-info'>
-                    <div className='movie-country'>
-                        <p>Polska</p>
-                        <p>Country</p>
-                    </div>
-                    <div className='movie-year'>
-                        <p>2021</p>
-                        <p>Year</p>
-                    </div>
-                </div>
-                <div className='movie-info'>
-                    <div className='movie-network'>
-                        <p>Network</p>
-                        <p>Network</p>
-                    </div>
-                    <div className='login-to-follow'>
-                    <FontAwesomeIcon icon={faShareSquare} />
-                    Login to follow
-                    </div>
-                </div>
-            </div>
-                       {/* to remove */}
-                       <div className='movie-elements'>
-                       <img src="images/header-img.jpg" className='movie-img' alt='movie'/>
-                <h3 className='movie-name'>Sherlock</h3>
-                <div className='movie-info'>
-                    <div className='movie-country'>
-                        <p>Polska</p>
-                        <p>Country</p>
-                    </div>
-                    <div className='movie-year'>
-                        <p>2021</p>
-                        <p>Year</p>
-                    </div>
-                </div>
-                <div className='movie-info'>
-                    <div className='movie-network'>
-                        <p>Network</p>
-                        <p>Network</p>
-                    </div>
-                    <div className='login-to-follow'>
-                    <FontAwesomeIcon icon={faShareSquare} />
-                    Login to follow
-                    </div>
-                </div>
-            </div>
-            <div className='movie-elements'>
-            <img src="images/header-img.jpg" className='movie-img' alt='movie'/>
-                <h3 className='movie-name'>Sherlock</h3>
-                <div className='movie-info'>
-                    <div className='movie-country'>
-                        <p>Polska</p>
-                        <p>Country</p>
-                    </div>
-                    <div className='movie-year'>
-                        <p>2021</p>
-                        <p>Year</p>
-                    </div>
-                </div>
-                <div className='movie-info'>
-                    <div className='movie-network'>
-                        <p>Network</p>
-                        <p>Network</p>
-                    </div>
-                    <div className='login-to-follow'>
-                    <FontAwesomeIcon icon={faShareSquare} />
-                    Login to follow
-                    </div>
-                </div>
-            </div>
-            <div className='movie-elements'>
-            <img src="images/header-img.jpg" className='movie-img' alt='movie'/>
-                <h3 className='movie-name'>Sherlock</h3>
-                <div className='movie-info'>
-                    <div className='movie-country'>
-                        <p>Polska</p>
-                        <p>Country</p>
-                    </div>
-                    <div className='movie-year'>
-                        <p>2021</p>
-                        <p>Year</p>
-                    </div>
-                </div>
-                <div className='movie-info'>
-                    <div className='movie-network'>
-                        <p>Network</p>
-                        <p>Network</p>
-                    </div>
-                    <div className='login-to-follow'>
-                    <FontAwesomeIcon icon={faShareSquare} />
-                    Login to follow
-                    </div>
-                </div>
-            </div>
-            <div className='movie-elements'>
-            <img src="images/header-img.jpg" className='movie-img' alt='movie'/>
-                <h3 className='movie-name'>Sherlock</h3>
-                <div className='movie-info'>
-                    <div className='movie-country'>
-                        <p>Polska</p>
-                        <p>Country</p>
-                    </div>
-                    <div className='movie-year'>
-                        <p>2021</p>
-                        <p>Year</p>
-                    </div>
-                </div>
-                <div className='movie-info'>
-                    <div className='movie-network'>
-                        <p>Network</p>
-                        <p>Network</p>
-                    </div>
-                    <div className='login-to-follow'>
-                    <FontAwesomeIcon icon={faShareSquare} />
-                    Login to follow
-                    </div>
-                </div>
-            </div>
+            { allShows.map((el)=>{
+                let image = "images/camera.png";
+                let webChannel = "undefined";
+                let year = "undefined";
+                let name = "undefined";
+                let country = "undefined";
+                if(el.show.image !== null){
+                     image = el.show.image.original;
+                }if(el.show.network !==null){
+                     country = el.show.network.country.name;
+                }if(el.show.webChannel !== null){
+                     webChannel = el.show.webChannel.name;
+                }if(el.show.name !== null){
+                     name = el.show.name;
+                }if(el.show.premiered !== null){
+                     year = el.show.premiered;
+                }
+
+                return <TopSeriesElement key={el.show.id} network={webChannel} year = {year}country={country} showName={name} image={image}/>;
+            
+            })}
         </section>
         </>
     )
