@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Navigation from './components/Navigation';
 import AppContent from './components/AppContent';
 import "./scss/main.scss";
 
   function App(){
     return(
       <>
-      <Navigation/>
       <AppContent/>
       </>
     );
