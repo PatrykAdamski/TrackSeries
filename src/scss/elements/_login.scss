@@ -1,0 +1,36 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.signin-text{
+    font-size: 3em;
+}
+
+.input-field{
+    margin-bottom: 20px;
+    width: 50%;
+    label{
+        font-size: 1.2em;
+    }
+    input{
+        width: 100%;
+        padding: 5px 10px;
+        font-size: 1.2em;
+        border-top:none;
+        border-right:none;
+        border-left:none;
+        border-bottom: 2px solid $secondary-color;
+    }
+    input:focus{
+        outline: none;
+        border-color: $hover-color;
+    }
+    span{
+        color: $hover-color;
+        cursor: pointer;
+    }
+}

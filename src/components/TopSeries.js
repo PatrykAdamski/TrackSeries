@@ -1,7 +1,7 @@
 import TopSeriesElement from './TopSeriesElement';
 import React, {useEffect, useState} from "react";
 
-export default function TopSeries(){
+export default function TopSeries(props){
 
     const [inputValue, setinputValue] = useState('');
      const [allShows, setallShows] = useState([]);
@@ -48,7 +48,7 @@ export default function TopSeries(){
                      year = el.show.premiered;
                 }
 
-                return <TopSeriesElement key={el.show.id} network={webChannel} year = {year}country={country} showName={name} image={image}/>;
+                return <TopSeriesElement user={props.user} key={el.show.id} network={webChannel} year = {year}country={country} showName={name} image={image}/>;
             
             })}
         </section>
