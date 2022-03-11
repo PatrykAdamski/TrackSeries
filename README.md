@@ -19,7 +19,7 @@ TrackSeries is a website that allows you to searching and following your favorit
 
 ## Hosting
 
-You can see this project [here](blissful-noyce-78e0f6.netlify.app)
+You can see this project [here](https://blissful-noyce-78e0f6.netlify.app/#/)
 
 ## Run
 * npm i
